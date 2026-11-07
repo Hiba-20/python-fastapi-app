@@ -1,0 +1,9 @@
+name: Tag
+on:
+  push:
+    tags: [ 'v*' ]
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Tag poussé ${{ github.ref_name }}"
