@@ -50,4 +50,21 @@ le bouton « Run workflow » n'apparaît que pour un workflow présent sur la br
 
 ## Partie 4 – Action Docker : comparaison des temps d'exécution
 
-_Voir la section complétée après le run (temps mesurés sur GitHub)._
+Mesures sur le run [#3](https://github.com/Hiba-20/python-fastapi-app/actions/runs/44760752411)
+(durées arrondies à la seconde par l'API GitHub) :
+
+| Action | Type | Durée de la step |
+|---|---|---|
+| `Run build info action` (`build-info`) | composite | < 1 s (0 s) |
+| `Run docker hello action` (`docker-hello`) | Docker (`image: Dockerfile`) | ≈ 2 s |
+
+L'action composite est quasi instantanée : ses steps s'exécutent directement dans le shell du
+runner, sans rien préparer. L'action Docker est plus lente car, à chaque exécution, le runner
+doit **construire l'image** à partir du `Dockerfile` (téléchargement de `alpine:3.20`, `COPY`,
+`chmod`), puis **démarrer un conteneur** pour exécuter `entrypoint.sh`. Sur une image plus
+lourde (dépendances installées dans le Dockerfile), l'écart se compte en dizaines de secondes.
+Autres limites : une action Docker ne tourne que sur des runners Linux, alors qu'une composite
+fonctionne sur tous les OS. Pour réduire le coût, on peut pointer `image:` vers une image
+pré-construite (`docker://ghcr.io/...`) plutôt qu'un Dockerfile.
+
+Capture du run réussi avec l'artefact `build-report` : [`docs/tp7-run-success.jpg`](docs/tp7-run-success.jpg).
