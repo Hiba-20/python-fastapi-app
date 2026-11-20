@@ -47,3 +47,7 @@ workflow est rejeté à la validation.
 En plus de `workflow_dispatch`, le workflow a un déclencheur `push` sur `feature/tp-actions` :
 le bouton « Run workflow » n'apparaît que pour un workflow présent sur la branche par défaut
 (`main`), ce qui n'est pas le cas ici. Le `push` permet de l'exécuter depuis la branche du TP.
+
+## Partie 4 – Action Docker : comparaison des temps d'exécution
+
+_Voir la section complétée après le run (temps mesurés sur GitHub)._
