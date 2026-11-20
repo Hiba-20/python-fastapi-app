@@ -61,5 +61,5 @@ et lui transmet `${{ inputs.environment }}` : lancé avec `staging`, le job
 
 ## Exécution
 
-Capture du run réussi (jobs `build`, `verify-env`, `deploy`, `call-greeting`) :
+Capture du [run #7](https://github.com/Hiba-20/python-fastapi-app/actions/runs/44840173420) réussi, lancé manuellement avec `staging` et `debug` coché (jobs `build`, `verify-env`, `deploy`, `call-greeting`) :
 [`docs/tp6-run-success.jpg`](docs/tp6-run-success.jpg).
