@@ -1,0 +1,13 @@
+name: Third-Party and Custom Actions Lab
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ feature/tp-actions ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
